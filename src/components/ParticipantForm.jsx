@@ -16,11 +16,11 @@ const ParticipantForm = ({ addParticipant }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Not so secret Santa's name"
+        placeholder="Not-so-secret Santa's name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <button type="submit">Add Santa🎅🧑‍🎄</button>
+      <button type="submit">Add Santa</button>
     </form>
   );
 };

@@ -9,16 +9,23 @@ import "./App.css";
 const App = () => {
   const [participants, setParticipants] = useState([]);
   const [results, setResults] = useState([]);
+  const [round, setRound] = useState(1);
+  const [stolenGifts, setStolenGifts] = useState([]);
 
   const addParticipant = (name) => {
     setParticipants([...participants, name]);
   };
 
-  const participantsShuffled = [...participants].sort(
-    () => 0.5 - Math.random()
+  const deleteParticipant = (name) => {
+    console.log(`Deleting ${name}`);
+    setParticipants(participants.filter((participant) => participant !== name));
+  };
+
+  const participantsShuffled = [...participants].sort(() => 0.5 - Math.random()
   );
 
   const generatePairs = () => {
+    console.log('Generating pairs..');
     // const participantsShuffled = [...participants].sort(() => 0.5 - Math.random());
     return participants.reduce((acc, giver) => {
       // find a receiver that is not equal to the giver
@@ -41,16 +48,34 @@ const App = () => {
   };
 
   const drawNames = () => {
-    setResults(generatePairs());
+    console.log('Drawing names..');
+    const pairs = generatePairs();
+    console.log('Pairs:', pairs);
+    setResults(pairs);
+    // setResults(generatePairs());
+  };
+
+  const stealGift = (giver, receiver) => {
+    console.log(`Stealing gift from ${giver} to ${receiver}`);
+    setStolenGifts([...stolenGifts, { giver, receiver }]);
+    setRound(round + 1);
   };
 
   return (
     <div className="App">
-      <h1>Secret Santa Woo</h1>
+      <h1>She Codes Santa 🧁💜 </h1>
       <ParticipantForm addParticipant={addParticipant} />
-      <ParticipantList participants={participants} />
+      <ParticipantList participants={participants} deleteParticipant={deleteParticipant} />
       <DrawButton drawNames={drawNames} />
-      <ResultList results={results} />
+      <ResultList results={results} stealGift={stealGift} />
+      <h2>Stolen Gifts</h2>
+      <ul>
+        {stolenGifts.map((gift, index) => (
+          <li key={index}>
+            {gift.giver} stole from {gift.receiver}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

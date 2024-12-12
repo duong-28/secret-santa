@@ -1,8 +1,10 @@
-const ParticipantList = ({ participants }) => {
+const ParticipantList = ({ participants, deleteParticipant }) => {
   return (
     <ul>
-      {participants.map((participant) => (
-        <li key={participant}>{participant}</li>
+      {participants.map((participant, index) => (
+        <li key={index}>{participant}
+        <button onClick={() => deleteParticipant(participant)}>😫</button>
+        </li>
       ))}
     </ul>
   );
