@@ -1,8 +1,9 @@
 import { useState } from "react";
-import ParticipantForm from "./assets/components/ParticipantForm";
-import ParticipantList from "./assets/components/ParticipantList";
-import DrawButton from "./assets/components/DrawButton";
-import ResultList from "./assets/components/ResultList";
+import ParticipantForm from "./components/ParticipantForm";
+import ParticipantList from "./components/ParticipantList";
+import DrawButton from "./components/DrawButton";
+import ResultList from "./components/ResultList";
+
 import "./App.css";
 
 const App = () => {
