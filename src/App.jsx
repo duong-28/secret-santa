@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ParticipantForm from "./assets/components/ParticipantForm";
 import ParticipantList from "./assets/components/ParticipantList";
 import DrawButton from "./assets/components/DrawButton";
@@ -8,25 +8,46 @@ import "./App.css";
 const App = () => {
   const [participants, setParticipants] = useState([]);
   const [results, setResults] = useState([]);
-  
+
   const addParticipant = (name) => {
     setParticipants([...participants, name]);
   };
 
+  const participantsShuffled = [...participants].sort(
+    () => 0.5 - Math.random()
+  );
+
+  const generatePairs = () => {
+    // const participantsShuffled = [...participants].sort(() => 0.5 - Math.random());
+    return participants.reduce((acc, giver) => {
+      // find a receiver that is not equal to the giver
+      let receiver = participantsShuffled.find(
+        (participant) => participant !== giver
+      );
+
+      // if last person was assigned to their own name swap with the first one
+      if (receiver === undefined) {
+        receiver = acc[0].receiver;
+        acc[0].receiver = giver;
+      }
+
+      acc.push({ giver, receiver });
+      // remove already selected receiver
+      participantsShuffled.splice(participantsShuffled.indexOf(receiver), 1);
+
+      return acc;
+    }, []);
+  };
+
   const drawNames = () => {
-    let shuffled = participants.slice().sort(() => Math.random() - 0.5);
-    let pairs = participants.map((participant, index) => ({
-      giver: participant,
-      receiver: shuffled[index]
-    }));
-    setResults(pairs);
+    setResults(generatePairs());
   };
 
   return (
     <div className="App">
       <h1>Secret Santa Woo</h1>
       <ParticipantForm addParticipant={addParticipant} />
-      <ParticipantList participants={participants} /> 
+      <ParticipantList participants={participants} />
       <DrawButton drawNames={drawNames} />
       <ResultList results={results} />
     </div>
