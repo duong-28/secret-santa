@@ -9,8 +9,8 @@ import "./App.css";
 const App = () => {
   const [participants, setParticipants] = useState([]);
   const [results, setResults] = useState([]);
-  const [round, setRound] = useState(1);
-  const [stolenGifts, setStolenGifts] = useState([]);
+  // const [round, setRound] = useState(1);
+  // const [stolenGifts, setStolenGifts] = useState([]);
   const [errorMessage, setErrorMessage] = useState(""); 
   const [namesDrawn, setNamesDrawn] = useState(false);
 
@@ -63,11 +63,11 @@ const App = () => {
     // setResults(generatePairs());
   };
 
-  const stealGift = (giver, receiver) => {
-    console.log(`Stealing gift from ${giver} to ${receiver}`);
-    setStolenGifts([...stolenGifts, { giver, receiver }]);
-    setRound(round + 1);
-  };
+  // const stealGift = (giver, receiver) => {
+  //   console.log(`Stealing gift from ${giver} to ${receiver}`);
+  //   setStolenGifts([...stolenGifts, { giver, receiver }]);
+  //   setRound(round + 1);
+  // };
 
   return (
     <div className="App">
@@ -77,17 +77,17 @@ const App = () => {
         {!namesDrawn && (
           <ParticipantList participants={participants} deleteParticipant={deleteParticipant} />
         )}
-        {namesDrawn && <ResultList results={results} stealGift={stealGift} />}
+        {namesDrawn && <ResultList results={results} />}
         <DrawButton drawNames={drawNames} />
       </div>
-      <h2>Stolen Gifts</h2>
+      {/* <h2>Stolen Gifts</h2>
       <ul className="stolen-gifts text-align">
         {stolenGifts.map((gift, index) => (
           <li key={index}>
             {gift.giver} stole from {gift.receiver}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

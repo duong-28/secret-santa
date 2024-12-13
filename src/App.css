@@ -97,8 +97,10 @@ ul {
   margin: 0 auto;
   margin-left: 100px;
   max-width: 300px;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
+  scrollbar-color: #888 #484242; /* Color of the scrollbar thumb and track */
+  scrollbar-width: thin; /* Width of the scrollbar */
   border-radius: 5px;
 }
 
@@ -122,17 +124,6 @@ h2 {
   padding: 0;
   margin: 0;
   margin-top: 5px; /* Reduce spacing above the stolen gifts list */
-}
-
-.stolen-gifts li {
-  margin: 10px 0;
-  line-height: 1.2;
-  padding: 0;
-  font-size: 14px;
-}
-
-.text-align {
-  text-align: center; /* Align text to the left */
 }
 
 .container {

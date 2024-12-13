@@ -1,12 +1,12 @@
-import StealButton from "./StealButton";
+// import StealButton from "./StealButton";
 
-const ResultList = ({ results, stealGift }) => {
+const ResultList = ({ results}) => {
   return (
     <ul>
       {results.map((result, index) => (
         <li key={index}>
           {result.giver} {"→"} {result.receiver}
-          <StealButton giver={result.giver} receiver={result.receiver} stealGift = {stealGift} />
+          {/* <StealButton giver={result.giver} receiver={result.receiver} stealGift = {stealGift} /> */}
         </li>
       ))}
     </ul>
