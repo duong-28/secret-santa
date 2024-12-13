@@ -3,7 +3,7 @@ const ParticipantList = ({ participants, deleteParticipant }) => {
     <ul>
       {participants.map((participant, index) => (
         <li key={index}>{participant}
-        <button onClick={() => deleteParticipant(participant)}>😫</button>
+        <button onClick={() => deleteParticipant(participant)}>👻</button>
         </li>
       ))}
     </ul>

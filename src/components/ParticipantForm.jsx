@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ParticipantForm = ({ addParticipant }) => {
+const ParticipantForm = ({ addParticipant, errorMessage }) => {
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
@@ -20,7 +20,8 @@ const ParticipantForm = ({ addParticipant }) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <button type="submit">Add Santa</button>
+      <button type="submit">Add this Santa</button>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </form>
   );
 };

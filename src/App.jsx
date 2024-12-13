@@ -11,9 +11,16 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [round, setRound] = useState(1);
   const [stolenGifts, setStolenGifts] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const [namesDrawn, setNamesDrawn] = useState(false);
 
   const addParticipant = (name) => {
-    setParticipants([...participants, name]);
+    if (participants.includes(name)) {
+      setErrorMessage(`Ooops, ${name} is already a Santa!`);
+    }else {
+      setParticipants([...participants, name]);
+      setErrorMessage("");
+    }
   };
 
   const deleteParticipant = (name) => {
@@ -52,6 +59,7 @@ const App = () => {
     const pairs = generatePairs();
     console.log('Pairs:', pairs);
     setResults(pairs);
+    setNamesDrawn(true); 
     // setResults(generatePairs());
   };
 
@@ -63,13 +71,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>She Codes Santa 🧁💜 </h1>
-      <ParticipantForm addParticipant={addParticipant} />
-      <ParticipantList participants={participants} deleteParticipant={deleteParticipant} />
-      <DrawButton drawNames={drawNames} />
-      <ResultList results={results} stealGift={stealGift} />
+      <h1>She Codes Santa🧁💜 </h1>
+      <ParticipantForm addParticipant={addParticipant} errorMessage={errorMessage} />
+      <div className="container">
+        {!namesDrawn && (
+          <ParticipantList participants={participants} deleteParticipant={deleteParticipant} />
+        )}
+        {namesDrawn && <ResultList results={results} stealGift={stealGift} />}
+        <DrawButton drawNames={drawNames} />
+      </div>
       <h2>Stolen Gifts</h2>
-      <ul>
+      <ul className="stolen-gifts text-align">
         {stolenGifts.map((gift, index) => (
           <li key={index}>
             {gift.giver} stole from {gift.receiver}
