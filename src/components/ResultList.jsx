@@ -1,12 +1,15 @@
 // import StealButton from "./StealButton";
 
-const ResultList = ({ results}) => {
+const ResultList = ({ results }) => {
   return (
-    <ul>
-      {results.map((result, index) => (
+    <ul className="results-list">
+      {results.map((pair, index) => (
         <li key={index}>
-          {result.giver} {"→"} {result.receiver}
-          {/* <StealButton giver={result.giver} receiver={result.receiver} stealGift = {stealGift} /> */}
+          <div className="result-pair">
+            <span className="giver">{pair.giver}</span>
+            <span className="arrow">→</span>
+            <span className="receiver">{pair.receiver}</span>
+          </div>
         </li>
       ))}
     </ul>

@@ -71,7 +71,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>She Codes Santa🧁💜 </h1>
+      <h1>She Codes Santa🧁🎄</h1>
       <ParticipantForm addParticipant={addParticipant} errorMessage={errorMessage} />
       <div className="container">
         {!namesDrawn && (

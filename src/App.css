@@ -6,22 +6,24 @@ body, html {
 }
 
 .App {
-  box-shadow: 0px 0px 5px 0px #a1a5ac;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   background-image: repeating-linear-gradient(
-        #f8f3f2 0px,
-        #f8f3f2 24px,
-        steelblue 25px
-    );
-  background-size: 100% 1.7em; /* adjusting size of the lines */
+    #f8f9fa 0px,
+    #f8f9fa 24px,
+    #a8c0d6 25px  /* Softer, less bright blue line */
+  );
+  background-size: 100% 1.7em;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   padding: 20px;
-  color: #7c0da1;
   position: absolute;
   left: 50%;
   top: 50%;
   height: 90vh;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 700px;
 }
 
 /* creating a line for notebook effect */
@@ -30,40 +32,44 @@ body, html {
   content: "";
   position: absolute;
   height: 90vh;
-  padding: auto;
   left: 12%;
   top: 5%;
   width: 1px;
-  background-color: rgb(28, 8, 8);
+  background-color: rgba(28, 8, 8, 0.2);
 }
 
 body {
-  background: #b0bfb4;
+  background: #354153;
 }
 
 h1 {
-  color: #557c70; 
-  font-style: italic;
+  color: #4a4a4a;
+  /* font-style: italic; */
   font-family: 'Liana', courier, monospace;
-  margin-left: 80px; /* Adjust this value to move h1 further to the right */
-  font-size: 3em;
-  margin-bottom: 10px;
+  margin-left: 80px;
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 button {
   padding: 8px 20px;
   font-size: 14px;
   border: none;
-  background-color: #e91e63;
+  background-color: #9c27b0;  /* Purple that matches She Codes theme */
   color: white;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   margin: 1em 0;
   margin-left: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.2);
 }
 
 button:hover {
-  background-color: #c6215e;
+  background-color: #7b1fa2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
 }
 
 button:focus,
@@ -77,18 +83,25 @@ button:focus-visible {
 }
 
 input {
-  padding: 8px;
+  padding: 10px 16px;
   font-size: 14px;
   width: 100%;
   max-width: 250px;
   margin-top: 10px;
-  border-radius: 15px;
-  border: 1px solid #6f6a6a;
+  border-radius: 20px;
+  border: 2px solid #e0e0e0;
   margin-left: auto;
   margin-right: 0;
-  background-color:rgba(218, 203, 228, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
   margin-bottom: 10px;
-  color: #7c0da1; 
+  color: #4a4a4a;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: #9c27b0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
 }
 
 ul {
@@ -96,20 +109,33 @@ ul {
   padding: 0;
   margin: 0 auto;
   margin-left: 100px;
-  max-width: 300px;
+  max-width: 400px;  /* Increased width for better readability */
   max-height: 400px;
   overflow-y: auto;
-  scrollbar-color: #888 #484242; /* Color of the scrollbar thumb and track */
-  scrollbar-width: thin; /* Width of the scrollbar */
-  border-radius: 5px;
+  scrollbar-color: #9c27b0 #f0f0f0;
+  scrollbar-width: thin;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 li {
   margin: 0;
-  line-height: 1.2;
-  padding: 0;
-  font-size: 14px;
-  /* margin-left: 0px; */
+  line-height: 1.8;
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #2c3e50;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+li:last-child {
+  border-bottom: none;
 }
 
 h2 {
@@ -127,8 +153,91 @@ h2 {
 }
 
 .container {
-  /* display: flex; */
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+  margin-left: 40px;  /* Align with the notebook margin */
+}
+
+/* Add some animation for the results */
+.stolen-gifts li {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Style for the participant names */
+.participant-name {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  color: #2c3e50;
+  flex-grow: 1;
+  margin-right: 12px;
+}
+
+/* Style for the results list */
+.results-list li {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 8px 0;
+  border-radius: 8px;
+}
+
+/* Style for the delete button container */
+.delete-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #9c27b0;
+  width: auto;
+  height: auto;
+  box-shadow: none;
+}
+
+.delete-button:hover {
+  background: none;
+  transform: scale(1.2);
+  box-shadow: none;
+}
+
+/* Add a nice hover effect on list items */
+li:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translateX(4px);
+}
+
+/* Style for the results pairs */
+.result-pair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.giver, .receiver {
+  font-weight: 500;
+}
+
+.arrow {
+  color: #9c27b0;
+  font-size: 1.2em;
+}
+
+.results-list {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
