@@ -6,11 +6,11 @@ body, html {
 }
 
 .App {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   background-image: repeating-linear-gradient(
-    #f8f9fa 0px,
-    #f8f9fa 24px,
-    #a8c0d6 25px  /* Softer, less bright blue line */
+    #f0f0f0 0px,
+    #f0f0f0 24px,
+    #94a3b8 25px
   );
   background-size: 100% 1.7em;
   transform: translate(-50%, -50%);
@@ -35,15 +35,15 @@ body, html {
   left: 12%;
   top: 5%;
   width: 1px;
-  background-color: rgba(28, 8, 8, 0.2);
+  background-color: rgba(28, 8, 8, 0.15);
 }
 
 body {
-  background: #354153;
+  background: #463a5c;
 }
 
 h1 {
-  color: #4a4a4a;
+  color: #374151;
   /* font-style: italic; */
   font-family: 'Liana', courier, monospace;
   margin-left: 80px;
@@ -131,7 +131,7 @@ li {
   align-items: center;
   justify-content: space-between;
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 li:last-child {
@@ -172,7 +172,7 @@ h2 {
 .participant-name {
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 500;
-  color: #2c3e50;
+  color: #1f2937;
   flex-grow: 1;
   margin-right: 12px;
 }
@@ -206,7 +206,7 @@ h2 {
 
 /* Add a nice hover effect on list items */
 li:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   transform: translateX(4px);
 }
 
@@ -220,6 +220,7 @@ li:hover {
 
 .giver, .receiver {
   font-weight: 500;
+  color: #1f2937;
 }
 
 .arrow {
